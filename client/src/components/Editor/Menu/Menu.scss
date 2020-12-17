@@ -1,0 +1,27 @@
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.popup-menu {
+  background-color: #606060;
+  z-index: 10;
+  height: fit-content;
+  padding: 0px 10px;
+}
+.menu-item-li {
+  display: flex;
+  flex-direction: column;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 5px 15px;
+  height: 28px;
+  border-bottom: 1px solid rgb(187, 187, 187);
+
+  &:hover {
+    //color: #e7d4f5;
+    background: #676767;
+  }
+}

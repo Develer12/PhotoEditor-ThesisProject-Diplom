@@ -1,0 +1,7 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://Develer12:reactstore@reactstore.8on6w.mongodb.net/diplom?retryWrites=true&w=majority",
+  "jwtSecret": "Develer12",
+  "baseUrl": "http://localhost:5000"
+}
+  
