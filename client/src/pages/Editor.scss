@@ -79,6 +79,28 @@
         }
     }
 
+    @media screen and (max-width: 550px) {
+
+        .edit-window {
+          flex-direction: column !important;
+
+          .edit-img{
+            width: 100% !important;
+            height: 50% !important;
+          }
+
+          .edit-settings{
+            height: 30% !important;
+            min-height: 250px !important;
+            width: 100% !important;
+
+            form {
+                margin-left: 3% !important;
+            }
+          }
+        }
+    }
+
     .edit-window{
         display: inherit;
         flex-direction: row;
@@ -181,6 +203,21 @@
                 flex-direction: row;
                 justify-content: space-between;
                 font-size: 0.8em;
+            }
+
+            input[type=submit]{
+                margin: 25px 10%;
+                height: 3em;
+                width: -webkit-fill-available;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                color: inherit;
+                background: #606060;
+
+                &:hover {
+                    background: #676767;
+                }
             }
 
             input[type=range]{

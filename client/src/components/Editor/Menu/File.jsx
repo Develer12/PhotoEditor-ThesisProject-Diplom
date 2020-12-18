@@ -11,9 +11,9 @@ function File(props) {
   const [ dropDown, setDropDown ] = useState(false);
   const [ upload, setUpload ] = useState(null);
 
-  const { icoVal, setIco, getIcoAll, clearIco, setIcoVal } = useBetween(IcoImgStorage);
+  const { icoVal, setIco, getIcoAll, clearIco, icoChoosen } = useBetween(IcoImgStorage);
   const { clearOrig, setOrig } = useBetween(OrigImgStorage);
-  const { clearEdited, setEdited } = useBetween(EditedImgStorage);
+  const { clearEdited, setEdited, getEdited } = useBetween(EditedImgStorage);
   const { loading, request, error, clearError } = Ajax();
 
 
@@ -57,6 +57,22 @@ function File(props) {
     return false;
   }
 
+  const DownloadFile = () => {
+    let picIndx = icoChoosen.indx;
+    let pic = getEdited(picIndx);
+    console.log(pic)
+    if(!!pic) {
+      pic = pic.pic;
+      const linkSource = `data:${ pic.mime };base64,${ pic.img }`;
+      const downloadLink = document.createElement('a');
+      document.body.appendChild(downloadLink);
+      downloadLink.href = linkSource;
+      downloadLink.target = '_self';
+      downloadLink.download = pic.name;
+      downloadLink.click(); 
+    }
+  }
+
   return (
     <li className='menu-item-li'>
       <div className='menu-item' onClick={ closeDropDown }>File</div>
@@ -71,20 +87,22 @@ function File(props) {
           >
             <div className='content'>
               <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
-                nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
-                quibusdam voluptates delectus doloremque, explicabo tempore dicta
-                adipisci fugit amet dignissimos?
+                Upload image for input it to flow.
+              </div>
+              <div>
+                Max count images on the flow is 15.
               </div>
               <br/>
-              <form onSubmit={ uploadFile } >
-                <input type='file' accept=".jpeg, .jpg, .png, .gif" name='files' multiple required /><br/>
-                <input type='submit' value='Upload' />
-              </form>
+              <div className='account-div'>
+                <form onSubmit={ uploadFile } className="spotlight style1 bottom cta" >
+                  <input type='file' accept=".jpeg, .jpg, .png, .gif" name='files' className='col-8 col-12-xsmall' multiple required /><br/>
+                  <input type='submit' className='col-4 col-12-xsmall' />
+                </form>
+              </div>
             </div>
           </PopupModal>
           <div className='menu-item' onClick={ ClearAll } >Clear</div>
-          <div className='menu-item'>item 3</div>
+          <div className='menu-item' onClick={ DownloadFile } >Download</div>
           <img src={ upload } />
         </div>
       }

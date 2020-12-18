@@ -50,10 +50,16 @@ Route.put('/permission', async (req, res) => {
   }
 });
 
-Route.delete('/', async (req, res) => {  
+Route.delete('/:id', async (req, res) => {  
   try{
     const userId = req.user.userId;
-    let user = await User.findByIdAndDelete(userId, function (err, docs) { 
+    const paramId = req.params.id;
+
+    if(userId == paramId) {
+      res.status(422).json({ message: 'You cannot change your own permissions' });
+    }
+
+    let user = await User.findByIdAndDelete(paramId, (err, docs) => { 
       if (err){ 
         throw new Error(err.toString()); 
       } 

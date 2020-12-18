@@ -4,36 +4,31 @@ const storageName = 'EditedImgStorage';
 
 export const EditedImgStorage = () => {
   const [editedVal, setEditedVal] = useState([]);
+  const [PresetList, setPresetList] = useState([]);
   const [editedChoosen, setEditedChoosen] = useState({ indx: null, name: null });
 
-  const setEdited = useCallback((img, settings, filters = null) => {
+  const setEdited = useCallback((img, settings) => {
     let data = localStorage.getItem(storageName);
     data = !!!data? [] : JSON.parse(data);
 
     if(img){
       img.forEach(element => {
-        data.push({ pic: element, settings
-          //, filters 
-        });
+        data.push({ pic: element, settings });
         console.log(data)
       });
       localStorage.setItem(storageName, JSON.stringify(data));
+      setEditedVal(data);
     }
-    setEditedVal(data);
   }, []);
 
-  const updateEdited = useCallback((pic, indx, settings = null, filters = null) => {
+  const updateEdited = useCallback((pic, indx, settings = null) => {
     let data = JSON.parse(localStorage.getItem(storageName));
     if(pic && data[indx]){
       settings = !!!settings? data[indx].settings : settings;
-      filters = !!!filters? data[indx].filters : filters;
-      console.log(filters)
-      data[indx] = { pic, settings
-        //, filters 
-      };
+      data[indx] = { pic, settings };
       localStorage.setItem(storageName, JSON.stringify(data));
+      setEditedVal(data);
     }
-    setEditedVal(data);
   }, []);
 
   useEffect(() => {
@@ -68,12 +63,21 @@ export const EditedImgStorage = () => {
     localStorage.removeItem(storageName);
   };
 
+  const addPreset = useCallback((name, settings) => {
+    if(!!settings){
+      PresetList.push({ name, settings });
+      setPresetList(PresetList);
+    }
+  }, []);
+
 
   return { 
     editedChoosen, setEditedChoosen, 
     editedVal, setEditedVal, 
+    PresetList, setPresetList,
     setEdited, updateEdited, 
     getEdited, getEditedAll, 
-    deleteEdited, clearEdited 
+    deleteEdited, clearEdited,
+    addPreset
   };
 }

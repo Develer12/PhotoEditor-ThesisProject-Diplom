@@ -183,6 +183,27 @@
     height: 70%;
     border-bottom: 5px solid #bbbbbb;
 
+    a {
+      display: flex;
+      justify-content: space-evenly;
+      
+      div {
+        margin-left: 45%;
+
+        span {
+          color: #b8b7ad !important;
+        }
+
+        span:nth-child(1):hover {
+          color: #c94e50 !important;
+        }
+
+        span:nth-child(2):hover {
+          color: #c94e50 !important;
+        }
+      }
+    }
+
     .slide-msg {
       margin: auto;
     }

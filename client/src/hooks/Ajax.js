@@ -30,7 +30,7 @@ export const Ajax = () => {
       if (!response.ok) {
         throw new Error(data.message || 'Something wrong');
       }
-      alert('done')
+      //alert('done')
 
 
       setLoading(false);

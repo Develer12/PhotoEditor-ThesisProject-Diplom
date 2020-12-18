@@ -9,7 +9,7 @@ let editedList = [];
 Route.put('/', (req, res) => {  
   try{
     let file = JSON.parse(req.body.file);
-    let settings = req.body;
+    let settings = !!req.body.settings? JSON.parse(req.body.settings) : req.body;
     delete settings['file'];
     let origImg = Buffer.from(file.data, 'base64');
     settings = !!settings['settings']? settings['settings'] : settings;
@@ -40,6 +40,12 @@ Route.put('/', (req, res) => {
                 image = image.color([{ apply: 'shade', params: [value] }]); break;
               case 'Shade':
                 image = image.color([{ apply: 'lighten', params: [value] }]); break;
+              case 'Red':
+                image = image.color([{ apply: 'red', params: [value] }]); break;
+              case 'Green':
+                image = image.color([{ apply: 'green', params: [value] }]); break;
+              case 'Blue':
+                image = image.color([{ apply: 'blue', params: [value] }]); break;
               default: break;
             }
           }

@@ -54,7 +54,7 @@ function EditSettings(props) {
       if(formData){  
         formData.append('file', JSON.stringify({
           data: props.pic.pic.img,
-          name: props.pic.pic.name,
+          name: props.pic.pic.name
         }));
 
         const data = await request('/api/editor/edit', 'PUT', 'multipart/form-data', formData);

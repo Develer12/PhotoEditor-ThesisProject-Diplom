@@ -5,14 +5,34 @@ const Jimp = require('jimp');
 
 const Preset = require('./../../../models/Preset');
 
-Route.get('/', async (req, res) => {  
-  try{
-    const userId = req.user.userId;
-    const preset = await Preset.findOne({ userId });
 
+Route.get('/all', (req, res) => {
+  const userId = req.user.userId;
+
+  Preset.findOne({ userId }, (err, preset) => {
     if(!!!preset) { res.json([]); }
     else if(!!!preset.presets) { res.json([]); }
     else { res.json(preset.presets); }
+  });
+});
+
+Route.get('/:name', async (req, res) => {  
+  try{
+    const name = req.params.name;
+    const userId = req.user.userId;
+    const preset = await Preset.findOne({ userId });
+
+    if(!!!preset) { res.json({}); }
+    else if(!!!preset.presets) { res.json({}); }
+    else { 
+      const presetIndx = preset.presets.findIndex(element => name === element.name);
+      if(presetIndx > -1) {
+        res.json(preset.presets[presetIndx].settings); 
+      } 
+      else {
+        res.json({});
+      }
+    }
   }
   catch(e){
     console.log(e)
@@ -20,36 +40,32 @@ Route.get('/', async (req, res) => {
   }
 });
 
-
-Route.post('/', async (req, res) => {  
+Route.post('/set', async (req, res) => {  
   try{
     const userId = req.user.userId;
     let presets = await Preset.findOne({ userId });
-    let settings = req.body.preset;
-    let name = req.body.preset;
-    console.log(presets)
-    
+    let settings = JSON.parse(req.body.preset);
+    let name = req.body.name;
+
     if(!!!presets) {
       presets = new Preset({
         userId,
         presets: [{ name, settings }]
       });
-      //await presets.save();
-      res.json(presets);
+      await presets.save();
+      return res.json(presets);
     }
-
 
     const presetIndx = presets.presets.findIndex(element => name === element.name);
     if(presetIndx > -1) {
       presets.presets[presetIndx] = { name, settings };
-      //await presets.save();
     } 
     else {
       presets.presets.push({ name, settings });
-      //await presets.save();
     }
-
-    res.json(presets);
+    
+    await presets.save();
+    res.json({ name, settings });
   }
   catch(e){
     console.log(e)
@@ -57,52 +73,30 @@ Route.post('/', async (req, res) => {
   }
 });
 
-
-//Edit Photo with preset
-Route.put('/', (req, res) => {  
+Route.delete('/:name', async (req, res) => {  
   try{
-    req.body = JSON.parse(req.body.file);
-    let filter = req.body.filter;
-    let origImg = Buffer.from(req.body.pic.img, 'base64');
+    const userId = req.user.userId;
+    const name = req.params.name;
+    let presets = await Preset.findOne({ userId });
 
-    Jimp.read(origImg, (err, image) => {
-      if (err) throw err; 
-      
-      let mime = image._originalMime;
+    if(!!!presets) {
+      res.status(422).json({ message: `Presset ${ name } not found, you cannot delete it` });
+    }
 
-      if(!!filter) {
-        switch (filter) {
-          case 'Sepia':
-            image = image.sepia(); break;
-          case 'Сontrast':
-            image = image.contrast(value); break;
-          case 'Highlights':
-            image = image.color([{ apply: 'brighten', params: [value] }]); break;
-          case 'Shadows':
-            image = image.color([{ apply: 'darken', params: [value] }]); break;
-          case 'Desaturate':
-            image = image.color([{ apply: 'desaturate', params: [value] }]); break;
-          case 'Saturation':
-            image = image.color([{ apply: 'saturate', params: [value] }]); break;
-          case 'Tint':
-            image = image.color([{ apply: 'shade', params: [value] }]); break;
-          case 'Shade':
-            image = image.color([{ apply: 'lighten', params: [value] }]); break;
-          default: break;
-        }
-      }
-      
-      image.getBuffer(mime, (err, img) => {
-        if (err) throw err;
-          
-        img = Buffer.from(img).toString('base64');
-        req.body.pic.size = [image.bitmap.width, image.bitmap.height];
-        req.body.pic.img = img;
-        res.json(req.body.pic);
-      });
-    });
+    console.log(presets)
+
+    const presetIndx = presets.presets.findIndex(element => name === element.name);
+    if(presetIndx > -1) {
+      presets.presets.splice(presetIndx, 1);
+      await presets.save();
+      res.json({ message: 'Deleted' })
+    } 
+    else {
+      res.status(422).json({ message: `Presset ${ name } not found, you cannot delete it` });
+    }
+
   }
-  catch(e){
+  catch(e) {
     console.log(e)
     res.status(500).json( e );
   }

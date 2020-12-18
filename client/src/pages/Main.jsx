@@ -42,9 +42,9 @@ function Main() {
 				<section id='banner'>
 					<div className='content'>
 						<header>
-							<h2>The future has landed</h2>
-							<p>And there are no hoverboards or flying cars.<br />
-							Just apps. Lots of mother flipping apps.</p>
+							<h2>The best Editor</h2>
+							<p>Edit image with help of Editor.<br />
+							Get best results.</p>
 							<ul className='actions'>
 								<li><a href='/editor' className='button'>Try Editor</a></li>
 							</ul>
@@ -60,23 +60,19 @@ function Main() {
 							<div className='row'>
 								<div className='col-4 col-12-medium'>
 									<header>
-										<h2>Odio faucibus ipsum integer consequat</h2>
-										<p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
+										<h2>Free online photo editor</h2>
+										<p>Just use this app to get edit photo</p>
 									</header>
 								</div>
 								<div className='col-4 col-12-medium'>
-									<p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-									Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-									nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-									augue varius tempus lobortis porttitor accumsan consequat
-									adipiscing lorem dolor.</p>
+									<p>Editor couldn’t be easier to use. No complicated tools or confusing UI – just simple, 
+									straightforward tools that transform your photo. Simply drag your photo into the editor 
+									to get started.</p>
 								</div>
 								<div className='col-4 col-12-medium'>
-									<p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-									adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-									Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-									mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-									ipsum dolor nullam.</p>
+									<p>Enhance your photo in one click with our range of filters. Our filters are customizable, 
+									so you can change the brightness, contrast and saturation to get the look you want. And forget 
+									about bad lighting and other common problems — Editor helps you fix your photo, fast.</p>
 								</div>
 							</div>
 						</div>
@@ -87,26 +83,14 @@ function Main() {
 				<section id='two' className='spotlight style2 right' style={ selecStyle('pic04.jpg') } >
 					<div className='content'>
 						<header>
-							<h2>Interdum amet non magna accumsan</h2>
-							<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+							<h2>Be be be</h2>
+							<p>Editor is a small but powerful photo editing application. 
+							If you have some knowledge of photography, you can do a lot with Photo Editor. 
+							Now use Photo Editor to edit photos on your mobile phone just like you would on a PC.</p>
 						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+						<p>I just wanna pass course project.</p>
 						<ul className='actions'>
-							<li><a href='#' className='button'>Learn More</a></li>
-						</ul>
-					</div>
-					<a href='#three' className='goto-next scrolly'>Next</a>
-				</section>
-
-				<section id='three' className='spotlight style3 left' style={ selecStyle('pic04.jpg') } >
-					<div className='content'>
-						<header>
-							<h2>Interdum felis blandit praesent sed augue</h2>
-							<p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
-						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-						<ul className='actions'>
-							<li><a href='#' className='button'>Learn More</a></li>
+							<li><a href='#' className='button'>Learn Again</a></li>
 						</ul>
 					</div>
 					<a href='#four' className='goto-next scrolly'>Next</a>
@@ -115,26 +99,27 @@ function Main() {
 				<section id='four' className='wrapper style1 special fade-up'>
 					<div className='container'>
 						<header className='major'>
-							<h2>Accumsan sed tempus adipiscing blandit</h2>
-							<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
+							<h2>Features</h2>
+							<p>Best experience in photo editing</p>
 						</header>
 						<div className='box alt'>
 							<div className='row gtr-uniform'>
 								<section className='col-4 col-6-medium col-12-xsmall'>
 									<span className='icon solid alt major fa-chart-area'></span>
-									<h3>Ipsum sed commodo</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+									<h3>Greate quality</h3>
+									<p>You can get your images with no loss.</p>
 								</section>
 								<section className='col-4 col-6-medium col-12-xsmall'>
 									<span className='icon solid alt major fa-comment'></span>
-									<h3>Eleifend lorem ornare</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+									<h3>Best technologies</h3>
+									<p>Modern Node.js server and React.js app.</p>
 								</section>
 								<section className='col-4 col-6-medium col-12-xsmall'>
 									<span className='icon solid alt major fa-flask'></span>
-									<h3>Cubilia cep lobortis</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+									<h3>Best app</h3>
+									<p>You cannot find best diplom than this app.</p>
 								</section>
+								{/*
 								<section className='col-4 col-6-medium col-12-xsmall'>
 									<span className='icon solid alt major fa-paper-plane'></span>
 									<h3>Non semper interdum</h3>
@@ -150,6 +135,7 @@ function Main() {
 									<h3>Massa arcu accumsan</h3>
 									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
 								</section>
+								*/}
 							</div>
 						</div>
 						<footer className='major'>
@@ -159,7 +145,7 @@ function Main() {
 						</footer>
 					</div>
 				</section>
-
+				{/*
 				<section id='five' className='wrapper style2 special fade' >
 					<div className='container'>
 						<header>
@@ -174,6 +160,7 @@ function Main() {
 						</form>
 					</div>
 				</section>
+				*/}
 
 				<footer id='footer'>
 					<ul className='icons'>
