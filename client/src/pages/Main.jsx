@@ -31,7 +31,7 @@ function Main() {
 									isAuthenticated && 
 									<>
 									<li><a href='/editor'>Try Editor</a></li>
-									<li><a href='/client' className='button primary'>Account</a></li>
+									<li><a href='/account' className='button primary'>Account</a></li>
 									</>
 								}
 							</li>

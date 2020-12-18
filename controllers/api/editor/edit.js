@@ -8,7 +8,6 @@ let editedList = [];
 
 Route.put('/', (req, res) => {  
   try{
-    console.log(req.body)
     let file = JSON.parse(req.body.file);
     let settings = req.body;
     delete settings['file'];
@@ -59,7 +58,6 @@ Route.put('/', (req, res) => {
         });
       });
     });
-    console.log('edit end')
   }
   catch(e){
     console.log(e)

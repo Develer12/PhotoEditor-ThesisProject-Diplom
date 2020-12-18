@@ -6,14 +6,15 @@ export const Auth = () => {
   const [ token, setToken ] = useState(null);
   const [ ready, setReady ] = useState(false);
   const [ userId, setUserId ] = useState(null);
-  //localStorage.removeItem(storageName);
+  const [ isAdmin, setIsAdmin ] = useState(false);
 
-  const login = useCallback((jwtToken, id) => {
+  const login = useCallback((jwtToken, id, admin = false) => {
     setToken(jwtToken);
     setUserId(id);
+    setIsAdmin(admin);
 
     localStorage.setItem(storageName, JSON.stringify({
-      userId: id, token: jwtToken
+      userId: id, token: jwtToken, isAdmin: admin
     }));
   }, []);
 
@@ -21,6 +22,7 @@ export const Auth = () => {
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
+    setIsAdmin(false);
 
     window.location.href = '/login';
     
@@ -31,11 +33,11 @@ export const Auth = () => {
     const data = JSON.parse(localStorage.getItem(storageName));
 
     if (data && data.token) {
-      login(data.token, data.userId);
+      login(data.token, data.userId, data.isAdmin);
     }
     setReady(true);
   }, [login]);
 
 
-  return { login, logout, token, userId, ready };
+  return { login, logout, token, userId, isAdmin, ready };
 }

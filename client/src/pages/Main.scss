@@ -884,6 +884,10 @@
         margin-left: -3.75em;
       }
 
+      .col-4.col-12-medium {
+        //box-shadow: -5em -1em 4.5em -1em  #e44c6513;
+      }
+
         .row.gtr-150 > * {
           padding: 0 0 0 3.75em;
         }
@@ -2171,7 +2175,7 @@
     }
 
     header.major {
-      margin: 0 0 4em 0;
+      margin: 0 0 2em 0;
       position: relative;
       text-align: center;
     }
@@ -2183,6 +2187,7 @@
         height: 0.2em;
         max-width: 20em;
         width: 75%;
+        margin-bottom: 10px;
       }
 
     footer.major {
@@ -3189,7 +3194,7 @@
   /* Wrapper */
 
     .wrapper {
-      padding: 6em 0 4em 0;
+      padding: 2em 0 4em 0;
     }
 
       .wrapper.style2 {

@@ -6,7 +6,7 @@ import { Auth } from './hooks/Auth';
 import { Routes } from './Routes';
 
 function App() {
-  const { token, login, logout, userId, ready } = Auth();
+  const { token, login, logout, userId, isAdmin, ready } = Auth();
   const isAuthenticated = !!token;
   const routes = Routes(isAuthenticated);
     
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{
-      token, login, logout, userId, isAuthenticated
+      token, login, logout, userId, isAuthenticated, isAdmin
     }}>
       <Router>
         <div className='App'>

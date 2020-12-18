@@ -1,0 +1,111 @@
+.account-form {
+  height: fit-content;
+
+
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  
+      /* Hide default HTML checkbox */
+    & input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+      /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+    }
+
+    input:checked + .slider {
+      background-color: #e44c65;
+    }
+  
+    input:focus + .slider {
+      box-shadow: 0 0 1px #e44c65;
+    }
+  
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+  
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+  }
+
+  .account-div {
+    height: 100%;
+    margin: 0 30px 0 30px;
+    padding: 0 15px 0 15px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    form {
+      width: 100%;
+      height: fit-content !important;
+      display: grid;
+
+      hr {
+        margin-bottom: 0px !important;
+        margin-top: 30px !important;
+      }
+
+      .form-space {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        div {
+          display: inherit;
+
+          h3 {
+            margin-right: 20px !important;
+          }
+        }
+      }
+
+      input {
+        width: -webkit-fill-available !important;
+      }
+
+      input[type=text], input[type=password] {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

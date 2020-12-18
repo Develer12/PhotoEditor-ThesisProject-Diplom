@@ -21,8 +21,8 @@ function Login() {
         });
 
         const data = await request('/api/auth/login', 'POST', 'application/json', {...form});
-        auth.login(data.token, data.userId);
-        window.location.href('/account');
+        auth.login(data.token, data.userId, data.is.isAdmin);
+        window.location.href = '/account';
       } 
       catch (e) {}
 
